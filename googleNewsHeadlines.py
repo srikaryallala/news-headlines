@@ -13,6 +13,8 @@ driver = webdriver.Chrome(options=chrome_options)
 
 def getGoogleNewsHeadlines():
     
+    headlines = []
+    
     # Website URL and class name initialization
     URL = "https://news.google.com/?hl=en-US&gl=US&ceid=US:en"
     articleClassName = "article"
@@ -20,7 +22,7 @@ def getGoogleNewsHeadlines():
     # Navigate to Google News's Front Page
     driver.get(URL)
 
-    # Find and print headlines
+    # Find and return headlines
     articles = driver.find_elements_by_tag_name(articleClassName)
     for article in articles:
         if not len((article.text.split('\n')[0]).strip()) == 0:
@@ -28,10 +30,9 @@ def getGoogleNewsHeadlines():
             articleTeaser = (article.text.split('\n')[1]).strip()
             newsOrganization = (article.text.split('\n')[2]).strip()
             timePosted = (article.text.split('\n')[3]).strip()
-            print(headline + '\n')
-            #print(articleTeaser + '\n')
-            #print(newsOrganization + '\n')
-            #print(timePosted + '\n')
+            headlines.append(headline)
+    return headlines
+            
             
 if __name__ == '__main__':
-    getGoogleNewsHeadlines()
+    print(getGoogleNewsHeadlines())
