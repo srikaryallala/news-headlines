@@ -1,2 +1,2 @@
-# google-news-headlines
-Uses Selenium web driver to find and print the headlines on the Google News homepage.
+# news-headlines
+Uses Selenium web driver to find and return headlines from various news sources.
